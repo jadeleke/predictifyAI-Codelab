@@ -1,12 +1,52 @@
-# React + Vite
+# AI Text Predictor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔮 **AI Text Predictor** is a web application that leverages the power of Google Cloud's PaLM API to generate text completions based on user input. Users can type a phrase, and the AI will predict and complete it!
 
-Currently, two official plugins are available:
+This project uses **React** for the frontend and **Google Cloud's PaLM API** for generating the text completions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Frontend Setup](#frontend-setup)
+- [Backend Setup](#backend-setup)
+- [API Integration](#api-integration)
+- [Running the Project](#running-the-project)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- User can input a phrase and get a text prediction from the AI.
+- Supports **light/dark mode** toggle for a modern and fun user experience.
+- Simple and intuitive UI for a seamless experience.
+
+## Technologies Used
+
+- **React** - Frontend library to build the user interface.
+- **Axios** - For making HTTP requests.
+- **Tailwind CSS** - For styling (if you choose to enable it).
+- **Google Cloud PaLM API** - The AI model used for generating text completions.
+- **Node.js/Express** - For backend API handling (optional, if implementing backend).
+  
+## Installation
+
+To get started with this project, follow these instructions.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/ai-text-predictor.git
+cd ai-text-predictor
+```
+
+### 2. Install dependencies
+For Frontend (React):
+
+```bash
+npm install
+```
+### 3. Create .env file for API keys
+In your backend directory, create a .env file and add your Google Cloud PaLM API key:

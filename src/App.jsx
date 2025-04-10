@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import TextInput from './components/TextInput';
+import TextOutput from './components/TextOutput';
+import './index.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [userInput, setUserInput] = useState('');
+  const [aiResponse, setAiResponse] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      const newTheme = !prev ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+      return !prev;
+    });
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div className={`app-container ${isDarkMode ? 'dark' : 'light'}`}>
+      <h1 className="app-title">🔮 AI Text Predictor</h1>
+      <p className="app-description">
+        Type a phrase and let the AI complete it!
       </p>
-    </>
-  )
+
+      <TextInput
+        userInput={userInput}
+        setUserInput={setUserInput}
+        setAiResponse={setAiResponse}
+        loading={loading}
+        setLoading={setLoading}
+      />
+      
+      <TextOutput response={aiResponse} loading={loading} />
+      
+      <button className="theme-toggle-btn" onClick={toggleTheme}>
+        {isDarkMode ? '🌙 Dark Mode' : '☀️ Light Mode'}
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default App;

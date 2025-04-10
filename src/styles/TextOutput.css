@@ -1,0 +1,23 @@
+.text-output-container {
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 36rem;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .response-box {
+    min-height: 3rem;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #4b5563;
+  }
+  
