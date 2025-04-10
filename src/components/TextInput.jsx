@@ -1,4 +1,5 @@
 import axios from "axios";
+import "../styles/TextInput.css";
 
 export default function TextInput({ userInput, setUserInput, setAiResponse, loading, setLoading }) {
   const handleSubmit = async () => {
@@ -8,7 +9,7 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
     setAiResponse("");
 
     try {
-      // Replace this URL with your actual PaLM API endpoint later
+      // Replace this URL with your actual PaLM API endpoint
       const response = await axios.post("https://api.mock.com/palm", { prompt: userInput });
       setAiResponse(response.data.generatedText || "Example: to the store to buy snacks.");
     } catch (error) {
@@ -19,18 +20,18 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
   };
 
   return (
-    <div className="flex flex-col w-full max-w-xl">
+    <div className="text-input-container">
       <textarea
         value={userInput}
         onChange={(e) => setUserInput(e.target.value)}
         placeholder="Start typing your phrase here..."
         rows={4}
-        className="w-full p-4 mb-4 border border-gray-300 rounded-xl resize-none"
+        className="textarea"
       />
       <button
         onClick={handleSubmit}
         disabled={loading}
-        className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition"
+        className="button"
       >
         {loading ? "Predicting..." : "✨ Predict Text"}
       </button>

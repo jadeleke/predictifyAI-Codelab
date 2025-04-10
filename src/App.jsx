@@ -1,16 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TextInput from './components/TextInput';
 import TextOutput from './components/TextOutput';
+import './index.css';
 
 function App() {
   const [userInput, setUserInput] = useState('');
   const [aiResponse, setAiResponse] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      const newTheme = !prev ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+      return !prev;
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6">
-      <h1 className="text-3xl font-bold mb-2">🔮 AI Text Predictor</h1>
-      <p className="text-gray-600 mb-6 text-center">
+    <div className={`app-container ${isDarkMode ? 'dark' : 'light'}`}>
+      <h1 className="app-title">🔮 AI Text Predictor</h1>
+      <p className="app-description">
         Type a phrase and let the AI complete it!
       </p>
 
@@ -23,6 +40,10 @@ function App() {
       />
       
       <TextOutput response={aiResponse} loading={loading} />
+      
+      <button className="theme-toggle-btn" onClick={toggleTheme}>
+        {isDarkMode ? '🌙 Dark Mode' : '☀️ Light Mode'}
+      </button>
     </div>
   );
 }
