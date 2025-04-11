@@ -1,7 +1,7 @@
 import axios from "axios";
 import "../styles/TextInput.css";
 
-const apikey = import.meta.env.VITE_GEMINI_API_KEY; // make sure env var starts with VITE_ if you're using Vite
+const apikey = import.meta.env.VITE_GEMINI_API_KEY;
 
 export default function TextInput({ userInput, setUserInput, setAiResponse, loading, setLoading }) {
   const handleSubmit = async () => {
@@ -31,7 +31,7 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
         }
       );
 
-      const result = response?.data?.candidates?.[0]?.content?.parts?.[0]?.text || "no response bruh, try again.";
+      const result = response?.data?.candidates?.[0]?.content?.parts?.[0]?.text || "no response, try again.";
       setAiResponse(result);
     } catch (error) {
     
