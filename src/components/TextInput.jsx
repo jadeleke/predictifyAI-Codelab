@@ -34,8 +34,8 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
       const result = response?.data?.candidates?.[0]?.content?.parts?.[0]?.text || "no response bruh, try again.";
       setAiResponse(result);
     } catch (error) {
-      console.error("api fucked up:", error);
-      setAiResponse("shit broke fam. try again.");
+    
+      setAiResponse("Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
