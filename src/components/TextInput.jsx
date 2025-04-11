@@ -1,6 +1,8 @@
 import axios from "axios";
 import "../styles/TextInput.css";
 
+const apikey = import.meta.env.VITE_GEMINI_API_KEY; // make sure env var starts with VITE_ if you're using Vite
+
 export default function TextInput({ userInput, setUserInput, setAiResponse, loading, setLoading }) {
   const handleSubmit = async () => {
     if (!userInput.trim()) return;
@@ -9,11 +11,31 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
     setAiResponse("");
 
     try {
-      // Replace this URL with your actual PaLM API endpoint
-      const response = await axios.post("https://api.mock.com/palm", { prompt: userInput });
-      setAiResponse(response.data.generatedText || "Example: to the store to buy snacks.");
+      const response = await axios.post(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apikey}`,
+        {
+          contents: [
+            {
+              parts: [
+                {
+                  text: userInput
+                }
+              ]
+            }
+          ]
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+
+      const result = response?.data?.candidates?.[0]?.content?.parts?.[0]?.text || "no response bruh, try again.";
+      setAiResponse(result);
     } catch (error) {
-      setAiResponse("Something went wrong. Try again.");
+      console.error("api fucked up:", error);
+      setAiResponse("shit broke fam. try again.");
     } finally {
       setLoading(false);
     }
@@ -28,11 +50,7 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
         rows={4}
         className="textarea"
       />
-      <button
-        onClick={handleSubmit}
-        disabled={loading}
-        className="button"
-      >
+      <button onClick={handleSubmit} disabled={loading} className="button">
         {loading ? "Predicting..." : "✨ Predict Text"}
       </button>
     </div>

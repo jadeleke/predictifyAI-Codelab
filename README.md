@@ -1,8 +1,8 @@
 # AI Text Predictor
 
-🔮 **AI Text Predictor** is a web application that leverages the power of Google Cloud's PaLM API to generate text completions based on user input. Users can type a phrase, and the AI will predict and complete it!
+🔮 **Predictify AI** is a web application that leverages the power of Google Cloud's PaLM API to generate text completions based on user input. Users can type a phrase, and the AI will predict and complete it!
 
-This project uses **React** for the frontend and **Google Cloud's PaLM API** for generating the text completions.
+This project uses **React** for the frontend and **Google Cloud's Gemini API** for generating the text completions.
 
 ## Table of Contents
 
@@ -37,9 +37,9 @@ To get started with this project, follow these instructions.
 
 ### 1. Clone the repository
 
-```bash
-git clone https://github.com/your-username/ai-text-predictor.git
-cd ai-text-predictor
+```
+git clone https://github.com/JoyTaribagshaw/predictifyAI-Codelab/
+cd predictifyAI-Codelab
 ```
 
 ### 2. Install dependencies
@@ -48,5 +48,16 @@ For Frontend (React):
 ```bash
 npm install
 ```
-### 3. Create .env file for API keys
-In your backend directory, create a .env file and add your Google Cloud PaLM API key:
+
+### 3. Modify .env file with API keys
+In the current directory, you can input your Gemini API key into the env file.
+
+
+### 3. Run the project
+To run type this into the console:
+```
+npm run dev
+```
+After this you copy the url and paste into your web browser of choice.
+
+### 4. Enjoy 😁
