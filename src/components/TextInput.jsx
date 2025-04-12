@@ -1,15 +1,15 @@
 import axios from "axios";
 import "../styles/TextInput.css";
 
-const apikey = import.meta.env.VITE_GEMINI_API_KEY; // make sure env var starts with VITE_ if you're using Vite
+const apikey = import.meta.env.VITE_GEMINI_API_KEY;
 
 export default function TextInput({ userInput, setUserInput, setAiResponse, loading, setLoading }) {
   const handleSubmit = async () => {
     if (!userInput.trim()) return;
-
+  
     setLoading(true);
     setAiResponse("");
-
+  
     try {
       const response = await axios.post(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apikey}`,
@@ -18,7 +18,7 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
             {
               parts: [
                 {
-                  text: userInput
+                  text: `Complete this sentence naturally: ${userInput}`
                 }
               ]
             }
@@ -30,16 +30,15 @@ export default function TextInput({ userInput, setUserInput, setAiResponse, load
           }
         }
       );
-
-      const result = response?.data?.candidates?.[0]?.content?.parts?.[0]?.text || "no response bruh, try again.";
+  
+      const result = response?.data?.candidates?.[0]?.content?.parts?.[0]?.text || "no response, try again.";
       setAiResponse(result);
     } catch (error) {
-    
       setAiResponse("Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
-  };
+  };  
 
   return (
     <div className="text-input-container">
