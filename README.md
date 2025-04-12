@@ -90,7 +90,7 @@ To get a local copy up and running, follow these simple steps.
 Clone the repository:
 
 ```bash
-git clone https://github.com/JoyTaribagshaw/predictifyAI-Codelab.git
+git clone https://github.com/jadeleke/predictifyAI-Codelab.git
 cd predictifyAI-Codelab
 ```
 
@@ -144,11 +144,9 @@ npm run build
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Joy Tari-Bagshaw**
+👤 **Joseph Adeleke**
 
-- GitHub: [JoyTaribagshaw](https://github.com/JoyTaribagshaw)
-- Twitter: [@JoyTariBagshaw](https://twitter.com/JoyTariBagshaw)
-- LinkedIn: [Joy Bagshaw](https://www.linkedin.com/in/joytaribagshaw)
+- GitHub: [JoyTaribagshaw](https://github.com/jadeleke)
 
 ---
 
@@ -164,7 +162,7 @@ npm run build
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!  
-Feel free to open a PR or issue [here](https://github.com/JoyTaribagshaw/predictifyAI-Codelab/issues)
+Feel free to open a PR or issue [here](https://github.com/jadeleke/predictifyAI-Codelab/issues)
 
 ---
 
